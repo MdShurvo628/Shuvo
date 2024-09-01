@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://raw.githubusercontent.com/Hashtechieofficial/Form-/main/background6.jpg');
+            background-size: 150%; /* ইমেজ পুরো পৃষ্ঠার উপর আচ্ছাদিত হবে */
+            background-position: center; /* ইমেজ কেন্দ্রভিত্তিক হবে */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            background-color: #34282C;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #EEEEEE;
+        }
+
+        .signup-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #EEEEEE;
+        }
+
+        .signup-container input[type="text"],
+        .signup-container input[type="password"],
+        .signup-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .signup-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .signup-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .signup-container p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-container a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .signup-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" required>
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" required>
+<!-- 
+            <label for="username">UserName</label>
+            <input type="text" id="id_username" name="username" required> -->
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- <label for="password">Password</label>
+            <input type="password" id="password" name="password" required> -->
+            
+
+            <input type="submit" value="Sign Up">
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+</body>
+</html>
